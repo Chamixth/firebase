@@ -22,7 +22,7 @@ jobs:
         run: | 
             go mod init firebase-generated
             go mod tidy
-            $Env:GOOS = "linux"
+            set GOOS = linux
             go build -o main main.go
 
       - name: Zip the Binary and Associated Files
