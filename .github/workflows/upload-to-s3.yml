@@ -1,0 +1,32 @@
+name: Upload to S3
+
+on:
+  push:
+    branches:
+      - main  # or your default branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.x  # specify your desired Go version
+
+      - name: Build Go Project
+        run: go build -o myapp
+
+      - name: Upload to S3
+        uses: aws-actions/amazon-s3-upload@v2
+        with:
+          aws-region: us-east-1  # replace with your desired region
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          bucket-name: usersjson123
+          object-name: myapp  # adjust the object path
+          source: main.zip  # path to the built binary or files to upload
