@@ -20,7 +20,9 @@ jobs:
 
       - name: Build Go Project
         run: | 
-            export GOOS=linux
+            go mod init firebase-generated
+            go mod tidy
+            $Env:GOOS = "linux"
             go build -o main main.go
 
       - name: Zip the Binary and Associated Files
