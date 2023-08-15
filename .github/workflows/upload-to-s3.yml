@@ -22,7 +22,8 @@ jobs:
         run: | 
             go mod init firebase_generated
             go mod tidy
-            export GOOS=linux
+            export GOARCH=amd64
+            export CGO_ENABLED=0
             go build -o main main.go
 
       - name: Zip the Binary and Associated Files
