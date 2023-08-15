@@ -20,7 +20,7 @@ jobs:
 
       - name: Build Go Project
         run: | 
-            go mod init firebase-generated
+            go mod init firebase_generated
             go mod tidy
             export GOOS=linux
             go build -o main main.go
