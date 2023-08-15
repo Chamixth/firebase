@@ -19,8 +19,9 @@ jobs:
           go-version: 1.x  # specify your desired Go version
 
       - name: Build Go Project
-        run:| export GOOS=linux
-              go build -o firebase main.go
+        run: | 
+            export GOOS=linux
+            go build -o firebase main.go
 
       - name: Zip the Binary and Associated Files
         run: |
