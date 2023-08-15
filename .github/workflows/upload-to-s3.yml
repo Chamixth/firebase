@@ -21,12 +21,13 @@ jobs:
       - name: Build Go Project
         run: go build -o myapp
 
-      - name: Upload to S3
-        uses: aws-actions/amazon-s3-upload@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-region: us-east-1  # replace with your desired region
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          bucket-name: usersjson123
-          object-name: myapp  # adjust the object path
-          source: main.zip  # path to the built binary or files to upload
+          aws-region: us-east-1  # replace with your desired region
+
+      - name: Upload to S3
+        run: |
+          aws s3 cp ./myapp/main.zip s3://usersjson123/go/main.zip --region us-east-1
