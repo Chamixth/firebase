@@ -21,11 +21,11 @@ jobs:
       - name: Build Go Project
         run: | 
             export GOOS=linux
-            go build -o firebase main.go
+            go build -o main main.go
 
       - name: Zip the Binary and Associated Files
         run: |
-          zip -r main.zip firebase
+          zip -r main.zip main
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
