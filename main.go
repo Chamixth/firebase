@@ -8,6 +8,6 @@ import (
 
 func main() {
 
-	//lambda.Start(apiHandler.Router)
+	//lambda.Start(apiHandler.Router)asdasdasdasdasdasd
 	lambda.Start(apiHandler.Router)
 }
